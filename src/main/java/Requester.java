@@ -16,6 +16,7 @@ public class Requester {
 
     public static String get(HttpsURLConnection con) throws IOException {
         String content = "";
+        con.setHostnameVerifier((hostname, session) -> true);
         try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
             String line;
             while ((line = in.readLine()) != null) {
@@ -120,7 +121,8 @@ public class Requester {
         ArrayList<Reseller> resellerOne = new ArrayList<>();
         ArrayList<ResellerPost> reseller = new ArrayList<>();
 
-//        System.out.println(get(AuthorizedConnect(HttpsConnection("https://cwatch.test.com:2087/json-api/listaccts?api.version=1"), "root", "GfHjkm11")));
+//        System.out.println(get(Connection.AuthorizedConnect(Connection.HttpsConnection("https://cwatch8.test.com:2087/json-api/cpanel?cpanel_jsonapi_user=censor&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=AddonDomain&cpanel_jsonapi_func=listaddondomains&regex=censor"), "root", "GfHjkm11")));
+        System.out.println(get(Connection.AuthorizedConnect(Connection.HttpsConnection("https://cwatch1.cwatch.comodo.com:2087/json-api/listaccts?api.version=1"), "root", "GfHjkm11")));
 //        parseJsonArray(get(AuthorizedConnect(HttpsConnection("https://cwatch.test.com:2087/json-api/listaccts?api.version=1"), "root", "GfHjkm11")), "acct", "domain");
 //        System.out.println(get(HttpConnection("http://api.cwatch.com/resellers")));
 //        parseJson(get(HttpConnection("http://api.cwatch.com/users")));
@@ -153,14 +155,14 @@ public class Requester {
 //        String jsonReseller = JsonUtils.toJson(reseller.get(0));
 //        System.out.println(jsonReseller);
 
-        ResellerPost resellerPost = new ResellerPost(resellerOne);
-        resellerPost.addResellerPost(new Reseller("Vasya", "Vasya Pupkin", "vasya.pupkin@gmail.com", "v.pupkin"));
-        String resellerPostJson = JsonUtils.toJson(resellerPost);
-        System.out.println(resellerPostJson);
-
-        resellerOne.add(new Reseller("Vasya", "Vasya Pupkin", "vasya.pupkin@gmail.com", "v.pupkin"));
-        String resellerPostSingle = JsonUtils.toJson(resellerOne.get(0));
-        System.out.println(resellerPostSingle);
+//        ResellerPost resellerPost = new ResellerPost(resellerOne);
+//        resellerPost.addResellerPost(new Reseller("Vasya", "Vasya Pupkin", "vasya.pupkin@gmail.com", "v.pupkin"));
+//        String resellerPostJson = JsonUtils.toJson(resellerPost);
+//        System.out.println(resellerPostJson);
+//
+//        resellerOne.add(new Reseller("Vasya", "Vasya Pupkin", "vasya.pupkin@gmail.com", "v.pupkin"));
+//        String resellerPostSingle = JsonUtils.toJson(resellerOne.get(0));
+//        System.out.println(resellerPostSingle);
 //        post(Connection.HttpConnection("http://api.cwatch.com/resellers"), jsonReseller);
 
 
